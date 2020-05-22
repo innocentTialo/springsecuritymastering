@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+import static com.ddf.mainteam.security.ApplicationUserRole.*;
+
 /**
  * Created by InnocentTIALO on 5/22/2020.
  */
@@ -31,22 +33,22 @@ public class FakeApplicationUserRepositoryImpl implements ApplicationUserReposit
     List<ApplicationUser> getApplicationUsers() {
         List<ApplicationUser> applicationUsers = Lists.newArrayList(
                 new ApplicationUser("paul",
-                        passwordEncoder.encode("password"),
-                        ApplicationUserRole.STUDENT.getGrantedAuthorities(),
+                        passwordEncoder.encode("password123"),
+                        STUDENT.getGrantedAuthorities(),
                         true,
                         true,
                         true,
                         true),
                 new ApplicationUser("linda",
-                        passwordEncoder.encode("password"),
-                        ApplicationUserRole.STUDENT.getGrantedAuthorities(),
+                        passwordEncoder.encode("password123"),
+                        ADMIN.getGrantedAuthorities(),
                         true,
                         true,
                         true,
                         true),
                 new ApplicationUser("tom",
-                        passwordEncoder.encode("password"),
-                        ApplicationUserRole.STUDENT.getGrantedAuthorities(),
+                        passwordEncoder.encode("password123"),
+                        ADMIN_TRAINEE.getGrantedAuthorities(),
                         true,
                         true,
                         true,

@@ -14,7 +14,6 @@ import static com.ddf.mainteam.security.ApplicationUserPermission.*;
 /**
  * Created by InnocentTIALO on 5/21/2020.
  */
-@Getter
 public enum ApplicationUserRole {
     STUDENT(Sets.newHashSet()),
     ADMIN(Sets.newHashSet(ApplicationUserPermission.values())),
@@ -27,7 +26,11 @@ public enum ApplicationUserRole {
         this.permissions = permissions;
     }
 
-    Set<GrantedAuthority> getGrantedAuthorities() {
+    private Set<ApplicationUserPermission> getPermissions() {
+        return permissions;
+    }
+
+    public Set<GrantedAuthority> getGrantedAuthorities() {
         Set<GrantedAuthority> permissions = getPermissions()
                 .stream()
                 .map(permission -> new SimpleGrantedAuthority(permission.getPermission()))
